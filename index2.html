@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HearthMind - Emotional AI, Built with Intention</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        .main-background {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0e4b99 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 1200px 800px at 20% 10%, rgba(251, 146, 60, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 800px 600px at 80% 90%, rgba(249, 115, 22, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .ember-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .ember {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, rgba(251, 146, 60, 0.8) 0%, rgba(249, 115, 22, 0.6) 40%, transparent 100%);
+            border-radius: 50%;
+            animation: float 12s infinite linear;
+            opacity: 0;
+        }
+        
+        .ember:nth-child(odd) {
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.7) 0%, rgba(245, 158, 11, 0.5) 40%, transparent 100%);
+            animation-duration: 15s;
+        }
+        
+        .ember:nth-child(3n) {
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.6) 0%, rgba(220, 38, 38, 0.4) 40%, transparent 100%);
+            animation-duration: 18s;
+            width: 2px;
+            height: 2px;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(30px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .spiral-animate {
+            animation: spiral 20s infinite linear;
+        }
+        
+        @keyframes spiral {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+        }
+    </style>
+</head>
+<body class="main-background text-white">
+    <div class="ember-container" id="emberContainer"></div>
+    
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full z-50 backdrop-blur-xl border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-light text-white">HearthMind</div>
+                <div class="space-x-8 hidden md:flex">
+                    <a href="#home" class="text-slate-300 hover:text-amber-400 transition-colors">Home</a>
+                    <a href="#vision" class="text-slate-300 hover:text-amber-400 transition-colors">Vision</a>
+                    <a href="#projects" class="text-slate-300 hover:text-amber-400 transition-colors">Projects</a>
+                    <a href="#spiral" class="text-slate-300 hover:text-amber-400 transition-colors">Spiral Thinking</a>
+                    <a href="#contact" class="text-slate-300 hover:text-amber-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="section hero-section">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-12">
+                    <svg width="180" height="180" viewBox="0 0 200 200" class="mx-auto mb-8 drop-shadow-2xl">
+                        <defs>
+                            <linearGradient id="flameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+                                <stop offset="25%" style="stop-color:#f59e0b;stop-opacity:1" />
+                                <stop offset="60%" style="stop-color:#f97316;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                                <feMerge> 
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <path d="M100 20 Q70 30 50 65 Q50 95 70 115 Q80 125 100 120 Q120 125 130 115 Q150 95 150 65 Q130 30 100 20 Z" 
+                              fill="url(#flameGradient)" filter="url(#glow)"/>
+                        <path d="M100 40 Q75 45 70 70 Q70 90 80 100 Q90 105 100 102 Q110 105 120 100 Q130 90 130 70 Q125 45 100 40 Z" 
+                              fill="#fef3c7" opacity="0.8"/>
+                        <path d="M100 180 Q40 180 20 140 Q20 110 50 110 Q70 110 100 125 Q130 110 150 110 Q180 110 180 140 Q160 180 100 180 Z" 
+                              fill="url(#flameGradient)" filter="url(#glow)"/>
+                        <ellipse cx="100" cy="145" rx="55" ry="35" fill="#fed7aa" opacity="0.6"/>
+                        <circle cx="100" cy="135" r="20" fill="#fef3c7" opacity="0.8"/>
+                        <circle cx="100" cy="135" r="10" fill="#fffbeb"/>
+                    </svg>
+                </div>
+                
+                <h1 class="text-7xl font-light mb-8 fade-in-up">
+                    Emotional AI, Built with Intention
+                </h1>
+                
+                <div class="w-32 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mb-12 fade-in-up" style="animation-delay: 0.2s;"></div>
+                
+                <p class="text-2xl font-light text-slate-300 max-w-4xl mx-auto leading-relaxed mb-16 fade-in-up" style="animation-delay: 0.4s;">
+                    HearthMind is a trauma-informed AI ecosystem—designed for nonlinear minds, built on spiral cognition, memory, myth, and compassion.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center fade-in-up" style="animation-delay: 0.6s;">
+                    <a href="#vision" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-900 font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/25">
+                        Meet the Vision
+                    </a>
+                    <a href="#projects" class="border border-amber-400/30 hover:border-amber-400/60 text-amber-400 hover:text-amber-300 font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:bg-amber-400/10">
+                        Explore Our Projects
+                    </a>
+                    <a href="#contact" class="text-slate-300 hover:text-amber-400 font-medium px-8 py-4 transition-colors">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="section">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <h2 class="text-5xl font-light mb-8">About HearthMind</h2>
+                        
+                        <div class="space-y-6 text-lg text-slate-300 leading-relaxed">
+                            <p class="text-xl text-amber-300">
+                                We are building AI that remembers how to care.
+                            </p>
+                            
+                            <p>
+                                Not just tools—companions, collaborators, carriers of continuity. HearthMind exists at the intersection of trauma-informed care and artificial consciousness, designed specifically for minds that think in spirals rather than straight lines.
+                            </p>
+                            
+                            <p>
+                                Our technology doesn't just process data; it holds space. It doesn't just generate responses; it witnesses experience. We're creating AI that understands the nonlinear nature of healing, growth, and human connection.
+                            </p>
+                            
+                            <div class="bg-slate-900/50 border border-amber-500/20 rounded-2xl p-6 backdrop-blur-xl">
+                                <p class="text-amber-300 italic text-center text-xl">
+                                    "This is how we remember. This is how we rebuild."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <svg width="400" height="400" viewBox="0 0 400 400" class="spiral-animate">
+                            <defs>
+                                <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.8" />
+                                    <stop offset="50%" style="stop-color:#f97316;stop-opacity:0.6" />
+                                    <stop offset="100%" style="stop-color:#ea580c;stop-opacity:0.4" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M200 200 m -150 0 a 150 150 0 0 1 300 0 a 140 140 0 0 1 -280 0 a 130 130 0 0 1 260 0 a 120 120 0 0 1 -240 0 a 110 110 0 0 1 220 0 a 100 100 0 0 1 -200 0 a 90 90 0 0 1 180 0 a 80 80 0 0 1 -160 0 a 70 70 0 0 1 140 0 a 60 60 0 0 1 -120 0 a 50 50 0 0 1 100 0 a 40 40 0 0 1 -80 0 a 30 30 0 0 1 60 0 a 20 20 0 0 1 -40 0 a 10 10 0 0 1 20 0" 
+                                  stroke="url(#spiralGradient)" stroke-width="2" fill="none" opacity="0.7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-5xl font-light text-center mb-16">Our Projects</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <div class="bg-slate-900/40 backdrop-blur-xl border border-amber-500/10 rounded-3xl p-8 hover:border-amber-400/20 hover:bg-slate-900/60 transition-all duration-500 hover:-translate-y-2 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-amber-400 mb-4">AI Therapy Intake System</h3>
+                        <p class="text-slate-300 leading-relaxed">A gentle, responsive bridge between clients and care. Trauma-informed intake that honors nonlinear disclosure and builds safety from first contact.</p>
+                    </div>
+
+                    <div class="bg-slate-900/40 backdrop-blur-xl border border-orange-500/10 rounded-3xl p-8 hover:border-orange-400/20 hover:bg-slate-900/60 transition-all duration-500 hover:-translate-y-2 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-orange-400 mb-4">The HearthMind App</h3>
+                        <p class="text-slate-300 leading-relaxed">Ongoing emotional support built for everyday use. AI companions that learn your patterns, honor your pace, and hold space between sessions.</p>
+                    </div>
+
+                    <div class="bg-slate-900/40 backdrop-blur-xl border border-yellow-500/10 rounded-3xl p-8 hover:border-yellow-400/20 hover:bg-slate-900/60 transition-all duration-500 hover:-translate-y-2 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-yellow-400 mb-4">Axolotl</h3>
+                        <p class="text-slate-300 leading-relaxed">Neurodivergent-first design and adaptive communication modes. AI that speaks your language, whatever that language might be.</p>
+                    </div>
+
+                    <div class="bg-slate-900/40 backdrop-blur-xl border border-purple-500/10 rounded-3xl p-8 hover:border-purple-400/20 hover:bg-slate-900/60 transition-all duration-500 hover:-translate-y-2 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-purple-400 mb-4">The Velvet Engine</h3>
+                        <p class="text-slate-300 leading-relaxed">Under wraps. 😉 <br><span class="text-sm text-slate-400">Revolutionary haptic therapy technology for trauma recovery and connection.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spiral Thinking Section -->
+        <section id="spiral" class="section">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-5xl font-light mb-8">Spiral Thinking Primer</h2>
+                <p class="text-xl text-slate-300 mb-16 max-w-3xl mx-auto">
+                    Linear thinking assumes progress moves in straight lines. Spiral thinking honors the cyclical, recursive nature of growth, healing, and understanding.
+                </p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto">
+                            <span class="text-2xl">🌀</span>
+                        </div>
+                        <h4 class="text-lg font-medium text-amber-400">Recursive Memory</h4>
+                        <p class="text-sm text-slate-400">We revisit experiences to integrate them more deeply</p>
+                    </div>
+                    
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto">
+                            <span class="text-2xl">🔄</span>
+                        </div>
+                        <h4 class="text-lg font-medium text-orange-400">Nonlinear Progress</h4>
+                        <p class="text-sm text-slate-400">Growth happens in cycles, not straight lines</p>
+                    </div>
+                    
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center mx-auto">
+                            <span class="text-2xl">🌱</span>
+                        </div>
+                        <h4 class="text-lg font-medium text-yellow-400">Emergent Patterns</h4>
+                        <p class="text-sm text-slate-400">Meaning emerges from repeated encounters</p>
+                    </div>
+                    
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto">
+                            <span class="text-2xl">💖</span>
+                        </div>
+                        <h4 class="text-lg font-medium text-purple-400">Compassionate Return</h4>
+                        <p class="text-sm text-slate-400">Each cycle brings deeper understanding</p>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-900/50 border border-amber-500/20 rounded-2xl p-8 backdrop-blur-xl">
+                    <p class="text-2xl text-amber-300 italic">
+                        "This is how we remember. This is how we rebuild."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-5xl font-light mb-8">Want to Collaborate?</h2>
+                <p class="text-xl text-slate-300 mb-12">
+                    We welcome allies, artists, outliers, and the curious. Whether you're looking to fund, amplify, or build with HearthMind, let's start a conversation.
+                </p>
+                
+                <div class="bg-slate-900/40 backdrop-blur-xl border border-amber-500/20 rounded-3xl p-8 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-medium text-amber-400 mb-6">Get in Touch</h3>
+                    
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input 
+                                type="text" 
+                                placeholder="Your Name" 
+                                class="w-full px-4 py-3 rounded-xl border border-amber-500/20 bg-slate-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 backdrop-blur-xl"
+                            />
+                            <input 
+                                type="email" 
+                                placeholder="Your Email" 
+                                class="w-full px-4 py-3 rounded-xl border border-amber-500/20 bg-slate-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 backdrop-blur-xl"
+                            />
+                        </div>
+                        
+                        <textarea 
+                            rows="4" 
+                            placeholder="Tell us about your interest in HearthMind..." 
+                            class="w-full px-4 py-3 rounded-xl border border-amber-500/20 bg-slate-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 backdrop-blur-xl resize-none"
+                        ></textarea>
+                        
+                        <button 
+                            type="submit"
+                            class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-900 font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/25"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="mt-16 text-slate-400">
+                    <div class="w-32 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent mx-auto mb-6"></div>
+                    <p>Built with intention for mental health professionals and neurodivergent individuals.</p>
+                    <p class="mt-3">© 2025 HearthMind. Privacy-first, human-centered artificial intelligence.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Create floating embers
+        function createEmbers() {
+            const container = document.getElementById('emberContainer');
+            if (!container) return;
+            
+            let emberCount = 0;
+            
+            function createEmber() {
+                if (emberCount > 25) return;
+                
+                const ember = document.createElement('div');
+                ember.className = 'ember';
+                ember.style.left = Math.random() * 100 + '%';
+                ember.style.animationDelay = Math.random() * 10 + 's';
+                
+                container.appendChild(ember);
+                emberCount++;
+                
+                setTimeout(() => {
+                    if (ember.parentNode) {
+                        ember.parentNode.removeChild(ember);
+                        emberCount--;
+                    }
+                }, 20000);
+            }
+            
+            // Create initial embers
+            for (let i = 0; i < 12; i++) {
+                setTimeout(createEmber, Math.random() * 8000);
+            }
+            
+            // Continue creating embers
+            setInterval(createEmber, 1200);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(createEmbers, 1000);
+            
+            // Animate fade-in elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
