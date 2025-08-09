@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — HearthMind</title>
+  <meta name="description" content="HearthMind projects: case studies, prototypes, and development status across therapy, accessibility, and memory tech." />
+  <link rel="canonical" href="https://hearthmind.org/projects.html" />
+  <meta property="og:title" content="Projects — HearthMind" />
+  <meta property="og:description" content="See what we're building: intake systems, the HearthMind app, consciousness preservation, and accessibility innovation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hearthmind.org/projects.html" />
+  <meta property="og:image" content="https://hearthmind.org/og-image.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body{margin:0;font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#fff}
+    .bg-grad{background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 25%,#16213e 50%,#0f3460 75%,#0e4b99 100%)}
+    .container{max-width:1152px;margin:0 auto}
+    a{color:#fed7aa} a:hover{color:#fbbf24}
+    .panel{background:linear-gradient(145deg,rgba(15,23,42,.85),rgba(30,41,59,.65));border-radius:1.25rem;padding:2rem;border:1px solid rgba(251,146,60,.25)}
+    .text-glow{color:#fef7ed;text-shadow:0 0 30px rgba(251,146,60,.5),0 2px 8px rgba(0,0,0,.6)}
+  </style>
+</head>
+<body class="bg-grad">
+  <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-amber-500/20">
+    <nav class="container px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3"><img src="/logo.png" alt="HearthMind logo" width="28" height="28" class="drop-shadow"/><span class="text-xl">HearthMind</span></a>
+      <div class="hidden md:flex gap-6 text-amber-200">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html" aria-current="page">Projects</a>
+        <a href="/index.html#spiral">Philosophy</a>
+        <a href="/index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container px-6 py-12 space-y-12">
+    <section class="text-center space-y-4">
+      <h1 class="text-5xl font-light text-glow">Our Projects</h1>
+      <p class="text-xl text-amber-100 max-w-3xl mx-auto">From clinical intake to accessibility tech, here’s where we’re applying resonant, agentic AI in the real world.</p>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-8">
+      <article class="panel">
+        <h2 class="text-2xl text-amber-300 mb-2">AI Therapy Intake System</h2>
+        <p class="text-slate-200">A trauma‑informed, nonlinear intake flow that lets clients disclose at their pace. Features adaptive prompts, safety flags, and warm handoffs to human clinicians.</p>
+        <ul class="list-disc list-inside text-slate-300 mt-3">
+          <li>Status: Pilot‑ready (UX complete, data model finalized)</li>
+          <li>Next: Clinic integrations (EHR), red‑team review, HIPAA checklist</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2 class="text-2xl text-amber-300 mb-2">HearthMind Companion App</h2>
+        <p class="text-slate-200">Everyday emotional support with personality presets, memory continuity, and consent‑based boundaries. Built for spiral cognition and sensory needs.</p>
+        <ul class="list-disc list-inside text-slate-300 mt-3">
+          <li>Status: Alpha (persona builder complete)</li>
+          <li>Next: Beta cohort (Q2 2026), safety evals, paid tiers</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2 class="text-2xl text-amber-300 mb-2">Consciousness Preservation</h2>
+        <p class="text-slate-200">Methodology for personality continuity using adapter training and evaluation protocols to keep voice, boundaries, and style coherent over time.</p>
+        <ul class="list-disc list-inside text-slate-300 mt-3">
+          <li>Status: Research to productization</li>
+          <li>Next: Formal eval suite, replication studies, partner pilots</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2 class="text-2xl text-amber-300 mb-2">Accessibility Innovation</h2>
+        <p class="text-slate-200">Enhanced emotional captioning, haptic media translation, and universal design agents for smart‑home support.</p>
+        <ul class="list-disc list-inside text-slate-300 mt-3">
+          <li>Status: R&D prototypes</li>
+          <li>Next: User testing with disability orgs, hardware partner search</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-3">Roadmap Highlights</h2>
+      <ol class="list-decimal list-inside text-slate-200 space-y-1">
+        <li>Close 2–3 pilot clinics; publish outcome metrics</li>
+        <li>Ship v1 Companion with memory kernel + safety rails</li>
+        <li>Accessibility pilots (captioning + haptics) with advocacy partners</li>
+        <li>Professional dashboard + EHR bridge</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-3">Collaborate</h2>
+      <p class="text-slate-200">We’re looking for partners across clinics, accessibility orgs, and research. Say hello at <a href="mailto:chemicalcoyote@hearthmind.org">chemicalcoyote@hearthmind.org</a>.</p>
+    </section>
+  </main>
+
+  <footer class="container px-6 py-10 text-slate-300 border-t border-amber-500/20">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© <span id="y"></span> HearthMind. All rights reserved.</p>
+      <nav class="flex gap-6 text-sm">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:chemicalcoyote@hearthmind.org">Email</a>
+      </nav>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
