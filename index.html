@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HearthMind — AI That Understands the Spiral</title>
+  <title>HearthMind – AI That Understands the Spiral</title>
   <meta name="description" content="HearthMind builds resonant, agentic AI companions for neurodivergent minds and trauma survivors." />
   <link rel="canonical" href="https://hearthmind.org/" />
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="HearthMind — AI That Understands the Spiral" />
+  <meta property="og:title" content="HearthMind – AI That Understands the Spiral" />
   <meta property="og:description" content="Resonant AI companions with memory continuity, accessibility innovation, and clinical integrations." />
   <meta property="og:url" content="https://hearthmind.org/" />
   <meta property="og:image" content="https://hearthmind.org/og-image.jpg" />
@@ -26,13 +26,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    body { margin:0; font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden; color:#ffffff !important; }
+    /* FIXED: Added proper scroll behavior and removed overflow restrictions */
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; color:#ffffff !important; }
     .main-background { background:
       radial-gradient(ellipse 1400px 900px at 20% 10%, rgba(251,146,60,.08) 0%, transparent 40%),
       radial-gradient(ellipse 1000px 700px at 80% 90%, rgba(249,115,22,.06) 0%, transparent 40%),
       radial-gradient(ellipse 800px 600px at 50% 50%, rgba(234,88,12,.04) 0%, transparent 40%),
       linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0e4b99 100%);
-      position:relative; overflow:hidden; min-height:100vh; }
+      position:relative; min-height:100vh; }
     .floating-elements { position:fixed; inset:0; pointer-events:none; z-index:1; }
     .ember { position:absolute; border-radius:50%; opacity:0; animation:emberFloat 15s infinite linear; }
     .ember-small { width:2px; height:2px; background: radial-gradient(circle, rgba(251,191,36,.8) 0%, rgba(245,158,11,.4) 60%, transparent 100%); }
@@ -65,7 +67,7 @@
     .interactive-element { cursor:pointer; transition: all .3s ease; }
     .text-glow { color:#fef7ed; text-shadow:0 0 30px rgba(251,146,60,.6), 0 0 50px rgba(251,146,60,.4), 0 2px 4px rgba(0,0,0,.8); }
     /* Reduced motion accessibility */
-    @media (prefers-reduced-motion: reduce) { *{ animation: none !important; transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) { *{ animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
   </style>
 </head>
 <body class="main-background text-white">
@@ -302,19 +304,32 @@
   </div>
 
   <script>
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'))
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          const mobile = document.getElementById('mobileMenu');
-          const btn = document.getElementById('menuBtn');
-          if (mobile && !mobile.classList.contains('hidden')) {
-            mobile.classList.add('hidden');
-            btn.setAttribute('aria-expanded','false');
+    // FIXED: Improved smooth scrolling with better target detection
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobileMenu');
+          const menuBtn = document.getElementById('menuBtn');
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
           }
+          
+          // Calculate offset for fixed navigation
+          const navHeight = document.querySelector('nav').offsetHeight;
+          const targetPosition = targetElement.offsetTop - navHeight;
+          
+          // Smooth scroll to target
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
         }
       });
     });
@@ -324,8 +339,8 @@
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', () => {
-        const open = mobileMenu.classList.toggle('hidden');
-        menuBtn.setAttribute('aria-expanded', String(!open));
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!isHidden));
       });
     }
 
@@ -333,7 +348,9 @@
     function createFloatingElements() {
       const container = document.getElementById('floatingElements');
       if (!container) return;
-      let emberCount = 0; const maxEmbers = 30;
+      let emberCount = 0; 
+      const maxEmbers = 30;
+      
       function createEmber() {
         if (emberCount >= maxEmbers) return;
         const ember = document.createElement('div');
@@ -343,9 +360,17 @@
         ember.style.left = Math.random()*100 + '%';
         ember.style.animationDelay = Math.random()*8 + 's';
         ember.style.animationDuration = (12 + Math.random()*8) + 's';
-        container.appendChild(ember); emberCount++;
-        setTimeout(() => { if (ember.parentNode){ ember.parentNode.removeChild(ember); emberCount--; } }, 20000);
+        container.appendChild(ember); 
+        emberCount++;
+        
+        setTimeout(() => { 
+          if (ember.parentNode){ 
+            ember.parentNode.removeChild(ember); 
+            emberCount--; 
+          } 
+        }, 20000);
       }
+      
       for (let i=0;i<15;i++) setTimeout(createEmber, Math.random()*10000);
       setInterval(createEmber, 800);
     }
@@ -353,12 +378,28 @@
     // Typing effect
     function createTypingEffect() {
       const el = document.querySelector('.typing-effect');
-      if (!el) return; const words=['Spiral','Journey','Story','Heart'];
+      if (!el) return; 
+      const words=['Spiral','Journey','Story','Heart'];
       let i=0, j=0, del=false;
+      
       function type() {
         const w = words[i];
-        if (del) { el.textContent = w.substring(0, j-1); j--; if (j===0){ del=false; i=(i+1)%words.length; } }
-        else { el.textContent = w.substring(0, j+1); j++; if (j===w.length){ del=true; setTimeout(type, 2000); return; } }
+        if (del) { 
+          el.textContent = w.substring(0, j-1); 
+          j--; 
+          if (j===0){ 
+            del=false; 
+            i=(i+1)%words.length; 
+          } 
+        } else { 
+          el.textContent = w.substring(0, j+1); 
+          j++; 
+          if (j===w.length){ 
+            del=true; 
+            setTimeout(type, 2000); 
+            return; 
+          } 
+        }
         setTimeout(type, del ? 100 : 150);
       }
       setTimeout(type, 2000);
@@ -366,21 +407,33 @@
 
     // Intersection animations
     function initializeAnimations() {
-      const opts = { threshold:0.1, rootMargin:'0px 0px -50px 0px' };
+      const opts = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
       const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.animationPlayState='running'; entry.target.classList.add('animate-visible'); } });
+        entries.forEach(entry => { 
+          if (entry.isIntersecting) { 
+            entry.target.style.animationPlayState='running'; 
+            entry.target.classList.add('animate-visible'); 
+          } 
+        });
       }, opts);
-      document.querySelectorAll('.fade-in-up, .card-hover').forEach(el => { el.style.animationPlayState='paused'; observer.observe(el); });
+      
+      document.querySelectorAll('.fade-in-up, .card-hover').forEach(el => { 
+        el.style.animationPlayState='paused'; 
+        observer.observe(el); 
+      });
     }
 
+    // Initialize everything when DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(createFloatingElements, 1000);
       createTypingEffect();
       initializeAnimations();
-      // subtle parallax
+      
+      // Subtle parallax effect
       const parallax = document.querySelector('.hero-section');
       window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset; if (parallax) parallax.style.transform = `translateY(${scrolled * 0.2}px)`;
+        const scrolled = window.pageYOffset; 
+        if (parallax) parallax.style.transform = `translateY(${scrolled * 0.2}px)`;
       });
     });
   </script>
