@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" style="font-family: 'Inter', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="emberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:0.95"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="600" y="45" text-anchor="middle" fill="#fef7ed" font-size="28" font-weight="300" filter="url(#glow)">HEARTHMIND AI SYSTEM</text>
+  <line x1="450" y1="60" x2="750" y2="60" stroke="url(#emberGrad)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Main System Box -->
+  <rect x="280" y="80" width="640" height="420" rx="16" fill="url(#cardGrad)" stroke="#f9731633" stroke-width="1"/>
+  
+  <!-- LOCAL MODEL -->
+  <rect x="480" y="100" width="240" height="80" rx="12" fill="#0f3460" stroke="#fbbf2466" stroke-width="1"/>
+  <text x="600" y="135" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="500">LOCAL MODEL</text>
+  <ellipse cx="600" cy="160" rx="35" ry="15" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <ellipse cx="600" cy="155" rx="35" ry="15" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <ellipse cx="600" cy="150" rx="35" ry="15" fill="#234876" stroke="#64748b" stroke-width="1"/>
+  
+  <!-- ROUTER & CONTROLLER -->
+  <rect x="400" y="200" width="400" height="45" rx="8" fill="#0e4b99" stroke="#fbbf2488" stroke-width="1"/>
+  <text x="600" y="228" text-anchor="middle" fill="#fef7ed" font-size="14" font-weight="500">ROUTER &amp; CONTROLLER</text>
+  
+  <!-- MEMORY PIPELINE -->
+  <rect x="350" y="260" width="500" height="100" rx="12" fill="#1e293b55" stroke="#64748b55" stroke-width="1"/>
+  <text x="600" y="285" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="500">MEMORY PIPELINE</text>
+  
+  <!-- Pipeline stages -->
+  <rect x="380" y="300" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <text x="430" y="325" text-anchor="middle" fill="#e2e8f0" font-size="11">INGEST</text>
+  
+  <rect x="500" y="300" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <text x="550" y="325" text-anchor="middle" fill="#e2e8f0" font-size="11">RETRIEVE</text>
+  
+  <rect x="620" y="300" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <text x="670" y="325" text-anchor="middle" fill="#e2e8f0" font-size="11">WRITEBACK</text>
+  
+  <!-- Pipeline arrows -->
+  <path d="M480 320 L500 320" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  <path d="M600 320 L620 320" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  
+  <!-- Doozers -->
+  <g transform="translate(380, 400)">
+    <rect width="80" height="60" rx="8" fill="#1e293b" stroke="#f9731666" stroke-width="1"/>
+    <circle cx="40" cy="22" r="12" fill="#374151"/>
+    <rect x="28" y="38" width="24" height="14" rx="3" fill="#374151"/>
+    <text x="40" y="68" text-anchor="middle" fill="#f97316" font-size="10">TAGGER</text>
+  </g>
+  
+  <g transform="translate(480, 400)">
+    <rect width="80" height="60" rx="8" fill="#1e293b" stroke="#f9731666" stroke-width="1"/>
+    <circle cx="40" cy="22" r="12" fill="#374151"/>
+    <rect x="28" y="38" width="24" height="14" rx="3" fill="#374151"/>
+    <text x="40" y="68" text-anchor="middle" fill="#f97316" font-size="10">WRITER</text>
+  </g>
+  
+  <g transform="translate(580, 400)">
+    <rect width="80" height="60" rx="8" fill="#1e293b" stroke="#f9731666" stroke-width="1"/>
+    <circle cx="40" cy="22" r="12" fill="#374151"/>
+    <rect x="28" y="38" width="24" height="14" rx="3" fill="#374151"/>
+    <text x="40" y="68" text-anchor="middle" fill="#f97316" font-size="10">SUMMARIZER</text>
+  </g>
+  
+  <!-- Doozer arrows to pipeline -->
+  <path d="M420 400 L420 360" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <path d="M520 400 L550 360" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <path d="M620 400 L670 360" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- DOCK IDENTITY PACKAGE (Left) -->
+  <rect x="30" y="120" width="200" height="180" rx="12" fill="url(#cardGrad)" stroke="#fbbf2444" stroke-width="1"/>
+  <text x="130" y="148" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="500">DOCK IDENTITY PACKAGE</text>
+  <line x1="50" y1="160" x2="210" y2="160" stroke="#fbbf2433" stroke-width="1"/>
+  
+  <rect x="50" y="175" width="160" height="24" rx="4" fill="#0f172a" stroke="#47556966" stroke-width="1"/>
+  <text x="130" y="192" text-anchor="middle" fill="#94a3b8" font-size="10">identity.md</text>
+  
+  <rect x="50" y="205" width="160" height="24" rx="4" fill="#0f172a" stroke="#47556966" stroke-width="1"/>
+  <text x="130" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">anchor_and_focus.md</text>
+  
+  <rect x="50" y="235" width="160" height="24" rx="4" fill="#0f172a" stroke="#47556966" stroke-width="1"/>
+  <text x="130" y="252" text-anchor="middle" fill="#94a3b8" font-size="10">permissions.md</text>
+  
+  <!-- Boot Sequence Arrow -->
+  <path d="M230 200 L280 200" stroke="#fbbf24" stroke-width="2"/>
+  <polygon points="275,195 285,200 275,205" fill="#fbbf24"/>
+  <text x="255" y="190" text-anchor="middle" fill="#94a3b8" font-size="9">BOOT</text>
+  <text x="255" y="215" text-anchor="middle" fill="#94a3b8" font-size="9">SEQUENCE</text>
+  
+  <!-- SPECIALIST AGENTS (Right) -->
+  <rect x="970" y="120" width="200" height="160" rx="12" fill="url(#cardGrad)" stroke="#fbbf2444" stroke-width="1"/>
+  <text x="1070" y="148" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="500">SPECIALIST AGENTS</text>
+  <line x1="990" y1="160" x2="1150" y2="160" stroke="#fbbf2433" stroke-width="1"/>
+  
+  <!-- Agent icons -->
+  <g transform="translate(1000, 180)">
+    <circle cx="20" cy="15" r="15" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+    <circle cx="20" cy="10" r="6" fill="#475569"/>
+    <ellipse cx="20" cy="22" rx="8" ry="5" fill="#475569"/>
+    <text x="20" y="45" text-anchor="middle" fill="#94a3b8" font-size="9">Planner</text>
+  </g>
+  
+  <g transform="translate(1060, 180)">
+    <circle cx="20" cy="15" r="15" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+    <circle cx="20" cy="10" r="6" fill="#475569"/>
+    <ellipse cx="20" cy="22" rx="8" ry="5" fill="#475569"/>
+    <text x="20" y="45" text-anchor="middle" fill="#94a3b8" font-size="9">Researcher</text>
+  </g>
+  
+  <g transform="translate(1120, 180)">
+    <circle cx="20" cy="15" r="15" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+    <circle cx="20" cy="10" r="6" fill="#475569"/>
+    <ellipse cx="20" cy="22" rx="8" ry="5" fill="#475569"/>
+    <text x="20" y="45" text-anchor="middle" fill="#94a3b8" font-size="9">File Agent</text>
+  </g>
+  
+  <!-- Tasks & Replies Arrow -->
+  <path d="M920 180 L970 180" stroke="#fbbf24" stroke-width="2"/>
+  <polygon points="965,175 975,180 965,185" fill="#fbbf24"/>
+  <text x="945" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">TASKS &amp;</text>
+  <text x="945" y="195" text-anchor="middle" fill="#94a3b8" font-size="9">REPLIES</text>
+  
+  <!-- THREADECHO INBOX (Bottom Left) -->
+  <rect x="30" y="520" width="200" height="120" rx="12" fill="url(#cardGrad)" stroke="#f9731666" stroke-width="1"/>
+  <text x="130" y="548" text-anchor="middle" fill="#f97316" font-size="13" font-weight="500">THREADECHO INBOX</text>
+  <line x1="50" y1="560" x2="210" y2="560" stroke="#f9731633" stroke-width="1"/>
+  
+  <!-- Mailbox icon -->
+  <rect x="80" y="575" width="100" height="45" rx="6" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <rect x="85" y="580" width="90" height="8" rx="2" fill="#0f172a"/>
+  <text x="130" y="610" text-anchor="middle" fill="#94a3b8" font-size="10">Message Queue &amp; Bus</text>
+  
+  <!-- ThreadEcho arrows -->
+  <path d="M230 560 L380 480" stroke="#f97316" stroke-width="2" stroke-dasharray="6,3"/>
+  <path d="M420 460 L280 540" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- QDRANT (Bottom Right) -->
+  <rect x="970" y="350" width="200" height="180" rx="12" fill="url(#cardGrad)" stroke="#22c55e44" stroke-width="1"/>
+  <text x="1070" y="378" text-anchor="middle" fill="#22c55e" font-size="13" font-weight="500">VECTOR DATABASE</text>
+  <line x1="990" y1="390" x2="1150" y2="390" stroke="#22c55e33" stroke-width="1"/>
+  
+  <!-- Qdrant icon -->
+  <ellipse cx="1070" cy="430" rx="40" ry="18" fill="#1e3a5f" stroke="#22c55e66" stroke-width="1"/>
+  <ellipse cx="1070" cy="422" rx="40" ry="18" fill="#1e3a5f" stroke="#22c55e66" stroke-width="1"/>
+  <ellipse cx="1070" cy="414" rx="40" ry="18" fill="#234876" stroke="#22c55e66" stroke-width="1"/>
+  <text x="1070" y="418" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="600">Qdrant</text>
+  
+  <text x="1070" y="470" text-anchor="middle" fill="#94a3b8" font-size="10">Embed Model: bge-small-en</text>
+  
+  <rect x="1000" y="490" width="140" height="25" rx="4" fill="#0f172a" stroke="#22c55e33" stroke-width="1"/>
+  <text x="1070" y="507" text-anchor="middle" fill="#94a3b8" font-size="9">VECTOR MEMORY &amp; CONTEXT</text>
+  
+  <!-- Qdrant connection arrows -->
+  <path d="M720 340 L970 420" stroke="#22c55e" stroke-width="2"/>
+  <polygon points="965,415 975,420 965,425" fill="#22c55e"/>
+  
+  <path d="M660 460 L970 460" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Bottom Labels -->
+  <g transform="translate(200, 720)">
+    <rect x="0" y="0" width="180" height="50" rx="8" fill="#1e293b88" stroke="#64748b44" stroke-width="1"/>
+    <text x="90" y="22" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="500">CONVERSATION HISTORY</text>
+    <text x="90" y="40" text-anchor="middle" fill="#64748b" font-size="10">SQLite Database</text>
+  </g>
+  
+  <g transform="translate(420, 720)">
+    <rect x="0" y="0" width="180" height="50" rx="8" fill="#1e293b88" stroke="#64748b44" stroke-width="1"/>
+    <text x="90" y="22" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="500">EPISODIC MEMORY</text>
+    <text x="90" y="40" text-anchor="middle" fill="#64748b" font-size="10">Qdrant Vectors</text>
+  </g>
+  
+  <g transform="translate(640, 720)">
+    <rect x="0" y="0" width="180" height="50" rx="8" fill="#1e293b88" stroke="#64748b44" stroke-width="1"/>
+    <text x="90" y="22" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="500">LONG TERM MEMORY</text>
+    <text x="90" y="40" text-anchor="middle" fill="#64748b" font-size="10">Doozer Workers</text>
+  </g>
+  
+</svg>
