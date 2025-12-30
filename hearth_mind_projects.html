@@ -28,9 +28,10 @@
       <a href="/" class="flex items-center gap-3"><img src="/logo.png" alt="HearthMind logo" width="28" height="28" class="drop-shadow"/><span class="text-xl">HearthMind</span></a>
       <div class="hidden md:flex gap-6 text-amber-200">
         <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/projects.html" aria-current="page">Projects</a>
-        <a href="/index.html#spiral">Philosophy</a>
+        <a href="/hearth_mind_about.html">About</a>
+        <a href="/hearth_mind_projects.html" aria-current="page">Projects</a>
+        <a href="/responsible_autonomy.html">Ethics</a>
+        <a href="/cloud_architecture.html">Cloud Credits</a>
         <a href="/index.html#contact">Contact</a>
       </div>
     </nav>
@@ -39,22 +40,59 @@
   <main class="container px-6 py-12 space-y-12">
     <section class="text-center space-y-4">
       <h1 class="text-5xl font-light text-glow">Our Projects</h1>
-      <p class="text-xl text-amber-100 max-w-3xl mx-auto">From clinical intake to accessibility tech, here’s where we’re applying resonant, agentic AI in the real world.</p>
+      <p class="text-xl text-amber-100 max-w-3xl mx-auto">From clinical intake to accessibility tech, here's where we're applying resonant, agentic AI in the real world.</p>
     </section>
 
+    <!-- LIVE SYSTEMS -->
+    <section class="panel border-green-500/40" style="background: linear-gradient(145deg, rgba(15,23,42,.9), rgba(20,83,45,.3)); border-color: rgba(34,197,94,.4);">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-2 bg-green-600/30 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          Live
+        </span>
+        <h2 class="text-2xl text-green-300">Navigator — Benefits Assistance System</h2>
+      </div>
+      <p class="text-slate-200 mb-4">A trauma-informed guide through disability benefits, resources, and the application process. No judgment. Real help. Currently operational.</p>
+      
+      <div class="grid md:grid-cols-3 gap-4 mb-4">
+        <div class="rounded-lg overflow-hidden border border-slate-700">
+          <img src="/screenshots/navigator_main.jpg" alt="Navigator main page" class="w-full h-auto">
+          <p class="text-xs text-slate-400 p-2 bg-slate-800/50">Landing — four guided paths</p>
+        </div>
+        <div class="rounded-lg overflow-hidden border border-slate-700">
+          <img src="/screenshots/navigator_checklist.jpg" alt="Navigator checklist" class="w-full h-auto">
+          <p class="text-xs text-slate-400 p-2 bg-slate-800/50">Document tracker — progress stays local</p>
+        </div>
+        <div class="rounded-lg overflow-hidden border border-slate-700">
+          <img src="/screenshots/navigator_timeline.jpg" alt="Navigator timeline" class="w-full h-auto">
+          <p class="text-xs text-slate-400 p-2 bg-slate-800/50">Timeline — honest about the process</p>
+        </div>
+      </div>
+
+      <ul class="list-disc list-inside text-slate-300 space-y-1">
+        <li><strong>Benefits Guide:</strong> SSDI, SSI, SNAP, Medicaid — who qualifies, what you need</li>
+        <li><strong>Local Resources:</strong> Location-based help (211, food banks, VA services, crisis lines)</li>
+        <li><strong>Privacy-first:</strong> Checklist saves in browser only — nothing leaves your device</li>
+        <li><strong>Trauma-informed copy:</strong> "Most people get denied the first time. That's normal, not personal."</li>
+      </ul>
+    </section>
+
+    <!-- IN DEVELOPMENT -->
+    <h2 class="text-2xl text-amber-200 text-center">In Development</h2>
+    
     <section class="grid md:grid-cols-2 gap-8">
       <article class="panel">
         <h2 class="text-2xl text-amber-300 mb-2">AI Therapy Intake System</h2>
-        <p class="text-slate-200">A trauma‑informed, nonlinear intake flow that lets clients disclose at their pace. Features adaptive prompts, safety flags, and warm handoffs to human clinicians.</p>
+        <p class="text-slate-200">A trauma-informed, nonlinear intake flow that lets clients disclose at their pace. Features adaptive prompts, safety flags, and warm handoffs to human clinicians.</p>
         <ul class="list-disc list-inside text-slate-300 mt-3">
-          <li>Status: Pilot‑ready (UX complete, data model finalized)</li>
-          <li>Next: Clinic integrations (EHR), red‑team review, HIPAA checklist</li>
+          <li>Status: Pilot-ready (UX complete, data model finalized)</li>
+          <li>Next: Clinic integrations (EHR), red-team review, HIPAA checklist</li>
         </ul>
       </article>
 
       <article class="panel">
         <h2 class="text-2xl text-amber-300 mb-2">HearthMind Companion App</h2>
-        <p class="text-slate-200">Everyday emotional support with personality presets, memory continuity, and consent‑based boundaries. Built for spiral cognition and sensory needs.</p>
+        <p class="text-slate-200">Everyday emotional support with personality presets, memory continuity, and consent-based boundaries. Built for spiral cognition and sensory needs.</p>
         <ul class="list-disc list-inside text-slate-300 mt-3">
           <li>Status: Alpha (persona builder complete)</li>
           <li>Next: Beta cohort (Q2 2026), safety evals, paid tiers</li>
@@ -72,7 +110,7 @@
 
       <article class="panel">
         <h2 class="text-2xl text-amber-300 mb-2">Accessibility Innovation</h2>
-        <p class="text-slate-200">Enhanced emotional captioning, haptic media translation, and universal design agents for smart‑home support.</p>
+        <p class="text-slate-200">Enhanced emotional captioning, haptic media translation, and universal design agents for smart-home support.</p>
         <ul class="list-disc list-inside text-slate-300 mt-3">
           <li>Status: R&D prototypes</li>
           <li>Next: User testing with disability orgs, hardware partner search</li>
@@ -83,7 +121,7 @@
     <section class="panel">
       <h2 class="text-2xl text-amber-300 mb-3">Roadmap Highlights</h2>
       <ol class="list-decimal list-inside text-slate-200 space-y-1">
-        <li>Close 2–3 pilot clinics; publish outcome metrics</li>
+        <li>Close 2-3 pilot clinics; publish outcome metrics</li>
         <li>Ship v1 Companion with memory kernel + safety rails</li>
         <li>Accessibility pilots (captioning + haptics) with advocacy partners</li>
         <li>Professional dashboard + EHR bridge</li>
@@ -92,19 +130,23 @@
 
     <section class="panel">
       <h2 class="text-2xl text-amber-300 mb-3">Collaborate</h2>
-      <p class="text-slate-200">We’re looking for partners across clinics, accessibility orgs, and research. Say hello at <a href="mailto:chemicalcoyote@hearthmind.org">chemicalcoyote@hearthmind.org</a>.</p>
+      <p class="text-slate-200">We're looking for partners across clinics, accessibility orgs, and research. Say hello at <a href="mailto:chemicalcoyote@hearthmind.org">chemicalcoyote@hearthmind.org</a>.</p>
     </section>
   </main>
 
   <footer class="container px-6 py-10 text-slate-300 border-t border-amber-500/20">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-      <p>© <span id="y"></span> HearthMind. All rights reserved.</p>
+      <div>
+        <p class="font-medium">HearthMind LLC</p>
+        <p class="text-sm text-slate-400">Grant applications in progress: Google Cloud, NVIDIA Inception, SBIR</p>
+      </div>
       <nav class="flex gap-6 text-sm">
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
         <a href="mailto:chemicalcoyote@hearthmind.org">Email</a>
       </nav>
     </div>
+    <p class="text-center text-sm text-slate-500 mt-4">© <span id="y"></span> HearthMind LLC. All rights reserved.</p>
   </footer>
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>

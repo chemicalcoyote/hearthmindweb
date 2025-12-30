@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cloud Architecture — HearthMind</title>
+  <meta name="description" content="How HearthMind uses cloud infrastructure: model training, secure memory systems, scalable demos, and accessibility features." />
+  <link rel="canonical" href="https://hearthmind.org/cloud_architecture.html" />
+  <meta property="og:title" content="Cloud Architecture — HearthMind" />
+  <meta property="og:description" content="HearthMind's hybrid local-cloud architecture for privacy-first AI deployment." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hearthmind.org/cloud_architecture.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body{margin:0;font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#fff}
+    .bg-grad{background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 25%,#16213e 50%,#0f3460 75%,#0e4b99 100%)}
+    .container{max-width:1152px;margin:0 auto}
+    a{color:#fed7aa} a:hover{color:#fbbf24}
+    .panel{background:linear-gradient(145deg,rgba(15,23,42,.85),rgba(30,41,59,.65));border-radius:1.25rem;padding:2rem;border:1px solid rgba(251,146,60,.25)}
+    .text-glow{color:#fef7ed;text-shadow:0 0 30px rgba(251,146,60,.5),0 2px 8px rgba(0,0,0,.6)}
+    .table-row{display:grid;grid-template-columns:1fr 2fr;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(251,146,60,.15)}
+    .table-row:last-child{border-bottom:none}
+  </style>
+</head>
+<body class="bg-grad">
+  <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-amber-500/20">
+    <nav class="container px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/logo.png" alt="HearthMind logo" width="28" height="28" class="drop-shadow"/>
+        <span class="text-xl">HearthMind</span>
+      </a>
+      <div class="hidden md:flex gap-6 text-amber-200">
+        <a href="/">Home</a>
+        <a href="/hearth_mind_about.html">About</a>
+        <a href="/hearth_mind_projects.html">Projects</a>
+        <a href="/responsible_autonomy.html">Ethics</a>
+        <a href="/cloud_architecture.html" aria-current="page">Cloud Credits</a>
+        <a href="/index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container px-6 py-12 space-y-12">
+
+    <!-- Hero -->
+    <section class="text-center space-y-4">
+      <h1 class="text-5xl font-light text-glow">Cloud Architecture</h1>
+      <p class="text-xl text-amber-100 max-w-3xl mx-auto">HearthMind runs a hybrid local-cloud architecture. Here's how we use cloud resources to build privacy-first AI at scale.</p>
+    </section>
+
+    <!-- Cloud Credits Use Table -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-6">Cloud Resource Allocation</h2>
+      
+      <div class="table-row">
+        <div class="text-amber-200 font-medium">Model Fine-Tuning</div>
+        <div class="text-slate-200">LoRA training for personality preservation and trauma-informed response patterns. GPU compute for adapter training on base models (Qwen, Llama) to create specialized therapeutic and accessibility personas.</div>
+      </div>
+      
+      <div class="table-row">
+        <div class="text-amber-200 font-medium">Secure Memory Systems</div>
+        <div class="text-slate-200">Encrypted vector databases for long-term memory continuity. Cloud-synced journaling with zero-knowledge architecture (service cannot read content without user-provided keys). Qdrant clusters for semantic memory retrieval across sessions.</div>
+      </div>
+      
+      <div class="table-row">
+        <div class="text-amber-200 font-medium">Scalable Public Demos</div>
+        <div class="text-slate-200">Cloud-hosted Navigator instances for beta access. Load-balanced inference endpoints for user testing. Staging environments for clinic pilot programs.</div>
+      </div>
+      
+      <div class="table-row">
+        <div class="text-amber-200 font-medium">Accessibility Features</div>
+        <div class="text-slate-200">Real-time voice processing for speech-to-text and prosody analysis. Adaptive UI rendering for sensory-safe interfaces. Multi-modal input processing (text, voice, haptic signals) with opt-in affect cues and user-reported state.</div>
+      </div>
+      
+      <div class="table-row">
+        <div class="text-amber-200 font-medium">Research & Evaluation</div>
+        <div class="text-slate-200">NotebookLM integration for documentation and research synthesis. Behavioral consistency testing pipelines. Tone and boundary verification suites.</div>
+      </div>
+    </section>
+
+    <!-- Architecture Overview -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Hybrid Architecture Philosophy</h2>
+      <p class="text-slate-200 leading-relaxed mb-6">HearthMind is designed local-first, cloud-augmented. Sensitive personal data stays on user hardware. Cloud resources handle the heavy compute that makes personalization possible without compromising privacy.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-lg text-amber-200 mb-2">Local Layer</h3>
+          <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+            <li>Personal memory storage (encrypted SQLite)</li>
+            <li>Inference on private hardware when possible</li>
+            <li>Identity anchors and reflection logs</li>
+            <li>User-controlled data sovereignty</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg text-amber-200 mb-2">Cloud Layer</h3>
+          <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+            <li>Model training and fine-tuning (GPU clusters)</li>
+            <li>Public demo hosting and beta access</li>
+            <li>Aggregate evaluation signals and anonymized performance metrics (opt-in)</li>
+            <li>Backup sync with end-to-end encryption</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current Infrastructure -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Current Infrastructure</h2>
+      <p class="text-slate-200 leading-relaxed mb-4">HearthMind already operates private AI infrastructure for development and internal testing.</p>
+      
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div>
+          <h3 class="text-amber-200 mb-2">Hyperion (Primary)</h3>
+          <p class="text-slate-300">AMD Ryzen 9950X, RTX 5080, 128GB RAM. Runs 14B-32B class models locally (depending on quantization and workload). Hosts Navigator, Local Stark, and Local Grey.</p>
+        </div>
+        <div>
+          <h3 class="text-amber-200 mb-2">Vector Storage</h3>
+          <p class="text-slate-300">Qdrant for semantic memory. Salience-scored retrieval. Consent-gated memory writes.</p>
+        </div>
+        <div>
+          <h3 class="text-amber-200 mb-2">Training Pipeline</h3>
+          <p class="text-slate-300">Axolotl + Unsloth for LoRA training. Custom datasets for personality preservation. Behavioral eval suites.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security & Compliance -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Security & Compliance Posture</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div>
+          <h3 class="text-amber-200 mb-2">Encryption</h3>
+          <p class="text-slate-300">Data encrypted at rest and in transit. User memory stores protected by user-controlled keys.</p>
+        </div>
+        <div>
+          <h3 class="text-amber-200 mb-2">Access Control</h3>
+          <p class="text-slate-300">Least-privilege architecture. Role-based permissions. No ambient data access.</p>
+        </div>
+        <div>
+          <h3 class="text-amber-200 mb-2">Audit & Response</h3>
+          <p class="text-slate-300">Activity logging for security events. Incident response procedures documented. Regular security reviews planned.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Cloud Unlocks -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">What Cloud Credits Unlock</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-lg text-amber-200 mb-2">Scale</h3>
+          <p class="text-slate-300 text-sm">Move from internal testing to public beta. Support concurrent users across Navigator and HearthMind Companion pilots.</p>
+        </div>
+        <div>
+          <h3 class="text-lg text-amber-200 mb-2">Speed</h3>
+          <p class="text-slate-300 text-sm">Faster training iterations. Parallel evaluation runs. Rapid prototyping for accessibility features.</p>
+        </div>
+        <div>
+          <h3 class="text-lg text-amber-200 mb-2">Reliability</h3>
+          <p class="text-slate-300 text-sm">Redundant hosting for clinic pilots. Uptime guarantees for healthcare-adjacent deployments.</p>
+        </div>
+        <div>
+          <h3 class="text-lg text-amber-200 mb-2">Research</h3>
+          <p class="text-slate-300 text-sm">Compute for consciousness preservation experiments. Longitudinal behavioral consistency studies.</p>
+        </div>
+      </div>
+      <p class="text-slate-400 text-sm mt-6">Cloud credits directly accelerate public beta readiness by funding fine-tuning iterations, hosting scalable demos, and running evaluation pipelines.</p>
+    </section>
+
+    <!-- Closing -->
+    <section class="panel text-center">
+      <p class="text-lg text-slate-200">HearthMind is not building AI in the cloud. We're building AI that uses the cloud responsibly — for scale, not surveillance.</p>
+    </section>
+
+  </main>
+
+  <footer class="container px-6 py-10 text-slate-300 border-t border-amber-500/20">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-medium">HearthMind LLC</p>
+        <p class="text-sm text-slate-400">Grant applications in progress: Google Cloud, NVIDIA Inception, SBIR</p>
+      </div>
+      <nav class="flex gap-6 text-sm">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:chemicalcoyote@hearthmind.org">Email</a>
+      </nav>
+    </div>
+    <p class="text-center text-sm text-slate-500 mt-4">© <span id="y"></span> HearthMind LLC. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
