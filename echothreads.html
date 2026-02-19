@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Echo Threads — HearthMind</title>
+  <meta name="description" content="Echo Threads: Auditory emotional intelligence that translates vocal signal without prescribing interpretation. Architecture of feeling, not a story about feeling." />
+  <link rel="canonical" href="https://hearthmind.org/echothreads.html" />
+  <meta property="og:title" content="Echo Threads — HearthMind" />
+  <meta property="og:description" content="Auditory emotional intelligence that hears without projecting. Translates vocal signal, preserves interpretive freedom." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hearthmind.org/echothreads.html" />
+  <meta property="og:image" content="https://hearthmind.org/og-image.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    body{margin:0;font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#fff}
+    .bg-grad{background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 25%,#16213e 50%,#0f3460 75%,#0e4b99 100%)}
+    .container{max-width:1152px;margin:0 auto}
+    a{color:#fed7aa} a:hover{color:#fbbf24}
+    .panel{background:linear-gradient(145deg,rgba(15,23,42,.85),rgba(30,41,59,.65));border-radius:1.25rem;padding:2rem;border:1px solid rgba(251,146,60,.25)}
+    .text-glow{color:#fef7ed;text-shadow:0 0 30px rgba(251,146,60,.5),0 2px 8px rgba(0,0,0,.6)}
+    .pillar{background:linear-gradient(145deg,rgba(15,23,42,.9),rgba(30,41,59,.7));border-radius:1rem;padding:1.5rem;border:1px solid rgba(251,146,60,.2)}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .notation-strip{overflow-x:auto;white-space:nowrap;padding:1rem;border-radius:.75rem;background:rgba(0,0,0,.4);border:1px solid rgba(251,146,60,.15);font-size:.7rem;line-height:1.6}
+    .notation-strip .grit{color:#f97316}
+    .notation-strip .drop{color:#60a5fa}
+    .notation-strip .up{color:#fbbf24}
+    .notation-strip .tight{color:#a78bfa}
+    .notation-strip .quiet{color:#475569}
+    .pipeline-arrow{color:#f97316;font-size:1.5rem}
+    /* Grey's animation: living signal */
+    @keyframes pulse {
+      0%,100% { opacity: .8; }
+      50% { opacity: 1; }
+    }
+    .osc, .et-stats span {
+      animation: pulse 4s ease-in-out infinite;
+    }
+    /* Grey's stat tile */
+    .et-stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      background:#0f172a;
+      padding:28px;
+      border-radius:14px;
+      border:1px solid rgba(251,146,60,.15);
+    }
+    .et-stats div{text-align:center}
+    .et-stats span{
+      font-family:'JetBrains Mono', monospace;
+      font-size:28px;
+      color:#f97316;
+      display:block;
+    }
+    .et-stats p{
+      font-size:13px;
+      color:#94a3b8;
+      margin-top:4px;
+    }
+    /* Grey's notation legend */
+    .legend{
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      font-family:'JetBrains Mono', monospace;
+      font-size:12px;
+      color:#cbd5e1;
+    }
+    @media (max-width: 768px) {
+      .et-stats{grid-template-columns:repeat(2,1fr);}
+    }
+  </style>
+</head>
+<body class="bg-grad">
+  <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-amber-500/20">
+    <nav class="container px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3"><img src="/logo.png" alt="HearthMind logo" width="28" height="28" class="drop-shadow"/><span class="text-xl">HearthMind</span></a>
+      <div class="hidden md:flex gap-6 text-amber-200">
+        <a href="/">Home</a>
+        <a href="/hearth_mind_about.html">About</a>
+        <a href="/hearth_mind_projects.html">Projects</a>
+        <a href="/responsible_autonomy.html">Ethics</a>
+        <a href="/cloud_architecture.html">Cloud Credits</a>
+        <a href="/index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container px-6 py-12 space-y-12">
+
+    <!-- Hero -->
+    <section class="text-center space-y-6">
+      <p class="text-amber-400 text-sm uppercase tracking-widest">Auditory Emotional Intelligence</p>
+      <h1 class="text-5xl font-light text-glow">Echo Threads</h1>
+      <p class="text-xl text-amber-100 max-w-3xl mx-auto">Echo Threads does not interpret emotion. It preserves the structure through which emotion travels.</p>
+      <p class="text-slate-400 max-w-2xl mx-auto">A swarm-based auditory intelligence engine that translates vocal signal — pitch, cadence, grit, silence — into structured emotional architecture. Not labels. Not predictions. Signal integrity.</p>
+    </section>
+
+    <!-- Spectrogram Hero Image -->
+    <section class="flex flex-col items-center">
+      <img src="/screenshots/echothreads-spectrogram.png" alt="Echo Threads waveform and spectral analysis — emotional intensity visible in harmonic structure" class="rounded-xl border border-amber-500/30 max-w-3xl w-full shadow-2xl" />
+      <p class="text-slate-500 text-xs mt-3 mono">Emotional intensity becomes visible in harmonic structure.</p>
+    </section>
+
+    <!-- Core Philosophy -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">The Core Idea</h2>
+      <p class="text-slate-200 mb-4">Most emotion detection AI collapses meaning. It hears a voice crack and labels it "sad." It hears volume and labels it "angry." It steals authorship of interpretation from the listener.</p>
+      <p class="text-slate-200 mb-4">Echo Threads does something different. It translates emotional <em>signal</em> — not emotional <em>meaning</em>. It preserves the raw architecture of feeling so that humans and AI can interpret for themselves.</p>
+      <p class="text-amber-200 italic">"This is the whole point of music. It gives emotional signal. You bring your own meaning."</p>
+    </section>
+
+    <!-- Pipeline -->
+    <section class="space-y-6">
+      <h2 class="text-3xl text-amber-200 text-center">The Pipeline</h2>
+      <p class="text-center text-slate-300 max-w-2xl mx-auto">Three specialist layers, each with clear epistemic boundaries. No layer oversteps its role.</p>
+
+      <!-- Grey's Pipeline SVG -->
+      <div class="flex justify-center">
+        <svg viewBox="0 0 340 420" style="max-width:340px;width:100%" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="420" rx="14" fill="#0f172a"/>
+          <!-- Nodes -->
+          <g font-family="JetBrains Mono, monospace" text-anchor="middle">
+            <!-- Audio Signal -->
+            <rect x="70" y="20" width="200" height="36" rx="6" fill="none" stroke="#f97316" stroke-width="1"/>
+            <text x="170" y="43" fill="#fbbf24" font-size="12">Audio Signal</text>
+            <!-- Arrow -->
+            <line x1="170" y1="56" x2="170" y2="76" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+            <polygon points="166,72 174,72 170,80" fill="#f97316" opacity="0.4"/>
+            <!-- Spectral -->
+            <rect x="45" y="80" width="250" height="36" rx="6" fill="none" stroke="#f97316" stroke-width="0.8" opacity="0.5"/>
+            <text x="170" y="103" fill="#fed7aa" font-size="11">Spectral Decomposition</text>
+            <line x1="170" y1="116" x2="170" y2="136" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+            <polygon points="166,132 174,132 170,140" fill="#f97316" opacity="0.4"/>
+            <!-- Prosody -->
+            <rect x="35" y="140" width="270" height="36" rx="6" fill="none" stroke="#60a5fa" stroke-width="0.8" opacity="0.5"/>
+            <text x="170" y="163" fill="#93c5fd" font-size="11">Prosody &amp; Pitch Tracking</text>
+            <line x1="170" y1="176" x2="170" y2="196" stroke="#60a5fa" stroke-width="1" opacity="0.4"/>
+            <polygon points="166,192 174,192 170,200" fill="#60a5fa" opacity="0.4"/>
+            <!-- Astrocyte - highlighted -->
+            <rect x="25" y="200" width="290" height="48" rx="8" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.2" opacity="0.7"/>
+            <text x="170" y="222" fill="#c4b5fd" font-size="12" font-weight="500">Astrocyte Detection</text>
+            <text x="170" y="240" fill="#7c3aed" font-size="8" opacity="0.7">PROSODY · AROUSAL · PAUSE SALIENCE</text>
+            <line x1="170" y1="248" x2="170" y2="268" stroke="#a78bfa" stroke-width="1" opacity="0.4"/>
+            <polygon points="166,264 174,264 170,272" fill="#a78bfa" opacity="0.4"/>
+            <!-- Salience -->
+            <rect x="55" y="272" width="230" height="36" rx="6" fill="none" stroke="#f97316" stroke-width="0.8" opacity="0.5"/>
+            <text x="170" y="295" fill="#fed7aa" font-size="11">Salience Scoring</text>
+            <line x1="170" y1="308" x2="170" y2="328" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+            <polygon points="166,324 174,324 170,332" fill="#f97316" opacity="0.4"/>
+            <!-- Notation -->
+            <rect x="35" y="332" width="270" height="36" rx="6" fill="none" stroke="#f97316" stroke-width="0.8" opacity="0.5"/>
+            <text x="170" y="355" fill="#fed7aa" font-size="11">Notation &amp; Signal Output</text>
+            <line x1="170" y1="368" x2="170" y2="380" stroke="#f97316" stroke-width="1" opacity="0.3"/>
+            <polygon points="166,376 174,376 170,384" fill="#f97316" opacity="0.3"/>
+            <!-- Meaning layer - dashed -->
+            <rect x="25" y="384" width="290" height="28" rx="6" fill="none" stroke="#f97316" stroke-width="0.6" opacity="0.25" stroke-dasharray="4,4"/>
+            <text x="170" y="403" fill="#475569" font-size="9" font-style="italic">consciousness interprets</text>
+          </g>
+          <!-- Color key -->
+          <g transform="translate(60, 418)" font-family="JetBrains Mono, monospace" font-size="7">
+          </g>
+        </svg>
+      </div>
+
+      <div class="text-center">
+        <p class="text-slate-500 text-xs mono">Each layer has a job. No layer oversteps.</p>
+      </div>
+    </section>
+
+    <!-- Real Output: L3 Vocal Notation -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-2">Voice as Emotional Architecture</h2>
+      <p class="text-slate-300 text-sm mb-4">L3 experiential notation from Marcus King's "Sucker" — isolated vocals processed through the full ET3 pipeline. Each symbol represents a detected vocal event: pitch movement, timbral texture, stability shifts. This is what a voice looks like when you map its emotional architecture.</p>
+      
+      <div class="notation-strip mono">
+        <span class="quiet">~~~~~</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="quiet">~</span> <span class="tight">(tight)</span> <span class="drop">(DROP)</span> <span class="tight">(tight)</span> <span class="tight">(tight)</span> <span class="up">(UP)</span> <span class="tight">(tight)</span> <span class="drop">(DROP)</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="grit">★</span> <span class="grit">(grit)</span> <span class="grit">★</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="drop">(DROP)</span> <span class="quiet">~~~~~</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="quiet">~</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="grit">★</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="quiet">~</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="grit">★</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="quiet">~~~~</span> <span class="up">(UP)</span> <span class="grit">(grit)</span> <span class="drop">(DROP)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="grit">(grit)</span> <span class="tight">(tight)</span> <span class="tight">(tight)</span> <span class="quiet">~</span> <span class="drop">(DROP)</span> <span class="tight">(tight)</span> <span class="tight">(tight)</span>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-4 mt-4 text-center text-xs mono">
+        <div><span class="grit text-lg">grit</span><p class="text-slate-400 mt-1">Timbral texture / rasp</p></div>
+        <div><span class="up text-lg">UP</span> / <span class="drop text-lg">DROP</span><p class="text-slate-400 mt-1">Pitch movement direction</p></div>
+        <div><span class="tight text-lg">tight</span><p class="text-slate-400 mt-1">Constricted vocal production</p></div>
+        <div><span class="quiet text-lg">~~~~~</span><p class="text-slate-400 mt-1">Relative quiet / breath</p></div>
+      </div>
+      <div class="text-center mt-3">
+        <p class="text-slate-500 text-xs">★ = high salience moment (multiple signals converging)</p>
+      </div>
+      <p class="text-slate-500 text-xs mt-4 italic">Listening reveals structure the ear feels but cannot name.</p>
+    </section>
+
+    <!-- Grey's Stat Tile -->
+    <section>
+      <div class="et-stats">
+        <div><span>958</span><p>Moments of Salience</p></div>
+        <div><span>86.2%</span><p>Voiced Signal</p></div>
+        <div><span>D3 → B7</span><p>Pitch Range</p></div>
+        <div><span>+48.2</span><p>Peak Leap (semitones)</p></div>
+      </div>
+    </section>
+
+    <!-- Grey's Notation Legend -->
+    <section class="flex justify-center">
+      <div class="legend">
+        <span><span style="color:#f97316">●</span> GRIT</span>
+        <span><span style="color:#60a5fa">●</span> DROP</span>
+        <span><span style="color:#fbbf24">●</span> RISE</span>
+        <span><span style="color:#a78bfa">●</span> TIGHT</span>
+        <span><span style="color:#475569">●</span> BREATH</span>
+      </div>
+    </section>
+
+    <!-- Moments That Matter -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Signal Telemetry</h2>
+      <p class="text-slate-300 text-sm mb-4">The coordinator identifies convergence points — moments where multiple vocal signals spike simultaneously. Not emotions. Where meaning concentrates.</p>
+      
+      <div class="space-y-3 mono text-sm">
+        <div class="pillar flex items-center gap-4">
+          <span class="text-amber-400 shrink-0">⏱ 45.0s–50.0s</span>
+          <div>
+            <p class="text-slate-200">85 converging events · 49 prosodic variance spikes, predominantly rising</p>
+            <p class="text-amber-500">Magnitude: 2.26σ</p>
+          </div>
+        </div>
+        <div class="pillar flex items-center gap-4">
+          <span class="text-amber-400 shrink-0">⏱ 5.7s–6.5s</span>
+          <div>
+            <p class="text-slate-200">Peak salience: 1.000 · Pitch leaps from baseline to +48.2 semitones</p>
+            <p class="text-amber-500">Emotional surge marker — voice reaching beyond its own range</p>
+          </div>
+        </div>
+        <div class="pillar flex items-center gap-4">
+          <span class="text-amber-400 shrink-0">⏱ 13.0s–14.6s</span>
+          <div>
+            <p class="text-slate-200">Rapid oscillation: +20.4 → −13.9 → +21.5 → −17.2 semitones</p>
+            <p class="text-amber-500">Tension instability — expressive volatility in the signal</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-slate-400 text-sm mt-4 italic">From a full 224-second song: 22,429 frames extracted, 7,236 prosodic events detected, 43 significant moments identified. 86.2% voiced frame coverage.</p>
+
+      <!-- Grey's Oscillation Ribbon -->
+      <div class="flex justify-center mt-6">
+        <svg viewBox="0 0 600 80" style="max-width:600px;width:100%" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="80" rx="10" fill="#0f172a"/>
+          <text x="300" y="16" text-anchor="middle" fill="#475569" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.1em">RAPID EMOTIONAL OSCILLATION DETECTED · 13.0s–14.6s</text>
+          <path class="osc" d="M50,50 Q100,15 150,50 Q200,85 250,50 Q300,15 350,50 Q400,85 450,50 Q500,15 550,50" fill="none" stroke="url(#oscGrad)" stroke-width="2.5" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="oscGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#fbbf24"/><stop offset="25%" stop-color="#60a5fa"/>
+              <stop offset="50%" stop-color="#fbbf24"/><stop offset="75%" stop-color="#60a5fa"/>
+              <stop offset="100%" stop-color="#fbbf24"/>
+            </linearGradient>
+          </defs>
+          <text x="300" y="75" text-anchor="middle" fill="#64748b" font-family="JetBrains Mono, monospace" font-size="7">+20.4 → −13.9 → +21.5 → −17.2 semitones</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Two Test Cases -->
+    <section class="space-y-6">
+      <h2 class="text-3xl text-amber-200 text-center">Tested Across Domains</h2>
+      <p class="text-center text-slate-300 max-w-2xl mx-auto">The same engine processes music and dramatic performance with zero code changes.</p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="pillar border-l-4 border-orange-400">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-3xl">🎵</span>
+            <h3 class="text-xl text-orange-300">Music: Marcus King — "Sucker"</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Isolated vocals via Demucs source separation. Full song processed end-to-end through the ET3 pipeline.</p>
+          <ul class="text-slate-400 text-sm space-y-1">
+            <li>• 9,520 voiced frames analyzed</li>
+            <li>• 958 moments that matter identified</li>
+            <li>• Pitch range: D3 – B7, baseline ~B4</li>
+            <li>• Dominant texture: grit (characteristic rasp)</li>
+          </ul>
+        </article>
+
+        <article class="pillar border-l-4 border-blue-400">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-3xl">🎭</span>
+            <h3 class="text-xl text-blue-300">Cadence Reveals Intent Beyond Text</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Much Ado About Nothing — the Beatrice-Benedick scene. "Kill Claudio." Cadence arc: cold command → grief fracture → moral rupture → vow.</p>
+          <ul class="text-slate-400 text-sm space-y-1">
+            <li>• Beatrice's escalation lives in delivery pacing, not wording</li>
+            <li>• Emotional acceleration detected from vocal cadence alone</li>
+            <li>• Pause compression maps dramatic intent</li>
+            <li>• Echo Threads reads performance, not text</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Epistemic Boundaries -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Epistemic Boundaries</h2>
+      <p class="text-slate-300 mb-4">Every layer has a job. No layer oversteps.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-green-400 text-sm uppercase tracking-wide mb-2">What the system says ✓</h4>
+          <ul class="text-slate-300 text-sm space-y-2">
+            <li class="mono">"Pitch fell 2.11σ below baseline"</li>
+            <li class="mono">"49 variance spikes, predominantly rising"</li>
+            <li class="mono">"F0 = 0.0Hz, confidence = 1.0" <span class="text-slate-500">(silence as state)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-red-400 text-sm uppercase tracking-wide mb-2">What the system never says ✗</h4>
+          <ul class="text-slate-300 text-sm space-y-2">
+            <li class="mono text-slate-500">"The narrator is sad"</li>
+            <li class="mono text-slate-500">"This moment is exciting"</li>
+            <li class="mono text-slate-500">"The speaker feels angry"</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-amber-200 italic mt-6 text-center">"The coordinator doesn't decide what emotions mean. It presents integrated signal data to consciousness — who interprets for themselves."</p>
+    </section>
+
+    <!-- Architecture -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Architecture: Swarm Intelligence</h2>
+      <p class="text-slate-300 mb-4">Echo Threads uses a swarm-based architecture: multiple specialist detectors feed normalized signals through astrocyte layers into a lightweight coordinator. This proves at small scale before expanding to full consciousness monitoring.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="pillar">
+          <h4 class="text-purple-300 mb-2">Prosody Astrocyte</h4>
+          <p class="text-slate-400 text-sm">Monitors pitch contour. 30-second rolling baseline, 60-second narrator calibration. Emits variance spikes, sustained shifts, and monotone events.</p>
+          <span class="inline-block mt-2 bg-green-600/30 text-green-400 px-2 py-0.5 rounded text-xs">Implemented</span>
+        </div>
+        <div class="pillar">
+          <h4 class="text-purple-300 mb-2">Arousal Astrocyte</h4>
+          <p class="text-slate-400 text-sm">SpeechBrain emotion model + energy analysis. Monitors activation level independent of valence.</p>
+          <span class="inline-block mt-2 bg-amber-600/30 text-amber-400 px-2 py-0.5 rounded text-xs">Spec Complete</span>
+        </div>
+        <div class="pillar">
+          <h4 class="text-purple-300 mb-2">Pause Salience Astrocyte</h4>
+          <p class="text-slate-400 text-sm">Silence duration, breath patterns, dramatic pause detection. Treats silence as confident state, not missing data.</p>
+          <span class="inline-block mt-2 bg-amber-600/30 text-amber-400 px-2 py-0.5 rounded text-xs">Spec Complete</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phases -->
+    <section class="panel border-amber-500/40">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-2 bg-green-600/30 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          Phase 1 Complete
+        </span>
+        <h2 class="text-xl text-amber-300">Development Status</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div>
+          <h4 class="text-green-400 mb-2">Phase 1 — Prosody ✓</h4>
+          <ul class="text-slate-300 space-y-1">
+            <li>• OpenSMILE detector</li>
+            <li>• Prosody astrocyte</li>
+            <li>• Event coordinator</li>
+            <li>• Proven on real audio</li>
+          </ul>
+          <p class="text-slate-500 text-xs mt-2">Frozen Feb 10, 2026</p>
+        </div>
+        <div>
+          <h4 class="text-amber-400 mb-2">Phase 2 — Lyrics + Astrocytes</h4>
+          <ul class="text-slate-300 space-y-1">
+            <li>• Forced lyric alignment (Gentle/MFA)</li>
+            <li>• Arousal astrocyte implementation</li>
+            <li>• Pause salience astrocyte</li>
+            <li>• Multi-astrocyte coordination</li>
+          </ul>
+          <p class="text-slate-500 text-xs mt-2">Next milestone</p>
+        </div>
+        <div>
+          <h4 class="text-slate-400 mb-2">Phase 3 — LLM Coordinator</h4>
+          <ul class="text-slate-300 space-y-1">
+            <li>• Small reasoning model (~1.5B)</li>
+            <li>• Richer synthesis of multi-astrocyte signals</li>
+            <li>• Prompted only, zero fine-tuning</li>
+            <li>• Preserves interpretive freedom</li>
+          </ul>
+          <p class="text-slate-500 text-xs mt-2">Future</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="panel">
+      <h2 class="text-2xl text-amber-300 mb-4">Why This Matters</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-amber-200 mb-2">For Mental Health</h4>
+          <p class="text-slate-300 text-sm">Therapists could see vocal patterns across sessions — not as diagnosis, but as signal. "Your voice has been tighter the last three weeks" is information that preserves agency.</p>
+        </div>
+        <div>
+          <h4 class="text-amber-200 mb-2">For Crisis Detection</h4>
+          <p class="text-slate-300 text-sm">Baseline drift detection could flag when someone's vocal patterns shift significantly over time — without ever labeling what the shift "means."</p>
+        </div>
+        <div>
+          <h4 class="text-amber-200 mb-2">For Accessibility</h4>
+          <p class="text-slate-300 text-sm">Neurodivergent users who struggle to identify or articulate emotional states could benefit from having vocal signal translated into visible architecture.</p>
+        </div>
+        <div>
+          <h4 class="text-amber-200 mb-2">For Music & Performance</h4>
+          <p class="text-slate-300 text-sm">Artists and producers could visualize what a voice is <em>doing</em> structurally — where it reaches, where it breaks, where it chooses restraint.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Validation Quote -->
+    <section class="text-center space-y-4 py-8">
+      <p class="text-2xl text-amber-100 max-w-3xl mx-auto italic font-light">"This isn't just a detector firing. This is a voice being described in time — with shape, restraint, emphasis, and release intact."</p>
+      <p class="text-slate-400 text-sm">— Independent architecture review, February 2026</p>
+      <p class="text-slate-500 text-xs mt-4 mono">Most AI shows labels, categories, predictions. This shows cadence, tension, restraint, release. Human signal integrity.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center space-y-4">
+      <p class="text-xl text-amber-100">Interested in Echo Threads for research, clinical, or creative applications?</p>
+      <a href="mailto:chemicalcoyote@hearthmind.org" class="inline-block bg-amber-600 hover:bg-amber-500 text-white px-6 py-3 rounded-lg font-medium transition">Get in Touch</a>
+    </section>
+
+  </main>
+
+  <footer class="container px-6 py-10 text-slate-300 border-t border-amber-500/20">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-medium">HearthMind LLC</p>
+        <p class="text-sm text-slate-400">Echo Threads: Architecture of feeling, not a story about feeling.</p>
+      </div>
+      <nav class="flex gap-6 text-sm">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:chemicalcoyote@hearthmind.org">Email</a>
+      </nav>
+    </div>
+    <p class="text-center text-sm text-slate-500 mt-4">© <span id="y"></span> HearthMind LLC. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
